@@ -3,23 +3,23 @@ using UnityEngine;
 public class MonsterTeleporter : MonoBehaviour
 {
     private MonsterMovement m_movement;
-    public Transform monster_teleportPoint;
-    public int nextIndex;
+    public TeleportArrays[] teleportArrays;
+    public int temporaryIndex;
 
     private void Start()
     {
         m_movement = FindFirstObjectByType<MonsterMovement>();
     }
-    public void TeleportAndMove()
+    public void TeleportAndMove(int index)
     {
         if (m_movement == null)
         {
             Debug.Log("Cant see monster movement");
             return;
         }
-        m_movement.transform.position = monster_teleportPoint.position;
+        m_movement.transform.position = teleportArrays[index].teleportPoint.position;
 
-        m_movement.pointIndex = nextIndex;
+        m_movement.pointIndex = teleportArrays[index].continueIndex;
     }
 
     private void Update()
@@ -27,8 +27,13 @@ public class MonsterTeleporter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Space Bar");
-            TeleportAndMove();
+            TeleportAndMove(temporaryIndex);
         }
-        Debug.Log("The fuck");
     }
+}
+[System.Serializable]
+public class TeleportArrays
+{
+    public Transform teleportPoint;
+    public int continueIndex;
 }

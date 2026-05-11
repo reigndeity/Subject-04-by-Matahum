@@ -24,4 +24,9 @@ public class Monster : MonoBehaviour
             Debug.Log("Game Over");
         }
     }
+
+    public void ToggleMovement(bool shouldMove)
+    {
+        canMove = shouldMove;
+    }
 }

@@ -423,7 +423,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507931318}
-  - component: {fileID: 507931317}
   m_Layer: 0
   m_Name: Teleport Point (3)
   m_TagString: Untagged
@@ -431,21 +430,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &507931317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507931316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87fccaa645b0731439abc37f58ab1d2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MonsterTeleporter
-  monster_teleportPoint: {fileID: 507931318}
-  nextIndex: 4
-  isCheckpoint: 1
 --- !u!4 &507931318
 Transform:
   m_ObjectHideFlags: 0
@@ -741,6 +725,7 @@ GameObject:
   - component: {fileID: 1794765913}
   - component: {fileID: 1794765912}
   - component: {fileID: 1794765911}
+  - component: {fileID: 1794765917}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -771,6 +756,7 @@ MonoBehaviour:
   - {fileID: 1530673703}
   pointIndex: 0
   moveSpeed: 2
+  rotationSpeed: 5
 --- !u!114 &1794765912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +863,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794765917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794765910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fccaa645b0731439abc37f58ab1d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterTeleporter
+  teleportArrays:
+  - teleportPoint: {fileID: 507931318}
+    continueIndex: 4
+  - teleportPoint: {fileID: 22451072}
+    continueIndex: 3
+  temporaryIndex: 0
 --- !u!1 &2050332774
 GameObject:
   m_ObjectHideFlags: 0
