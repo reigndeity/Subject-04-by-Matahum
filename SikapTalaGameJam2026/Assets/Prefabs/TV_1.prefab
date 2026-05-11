@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4138701175174046027}
   - component: {fileID: 3994255334192401215}
-  - component: {fileID: 2730043583657167394}
   - component: {fileID: 937417120730188747}
   m_Layer: 0
   m_Name: Back Camera
@@ -85,14 +84,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2730043583657167394
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 961367108292801003}
-  m_Enabled: 1
 --- !u!114 &937417120730188747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +622,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4478143715223287086}
   - component: {fileID: 8612685252269089372}
-  - component: {fileID: 5617875527810501074}
   - component: {fileID: 6917326236288660078}
   m_Layer: 0
   m_Name: Front Camera
@@ -706,14 +696,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &5617875527810501074
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3123658638326965245}
-  m_Enabled: 1
 --- !u!114 &6917326236288660078
 MonoBehaviour:
   m_ObjectHideFlags: 0
