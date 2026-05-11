@@ -3,7 +3,22 @@ guid: 725624bf603968844bf03f7c825f625a
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: d3b33796fde2a0a45a57638fb4917abd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Dome
+    second: {fileID: 2100000, guid: b7d787488573c3d4c89b30e11f392bf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red Dot
+    second: {fileID: 2100000, guid: 0b47212d92125ef468e9c8ab83647dfe, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

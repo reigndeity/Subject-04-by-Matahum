@@ -69,7 +69,7 @@ public class DialogueManager : MonoBehaviour
         nextAllowedSpacebarTime = Time.time + spacebarCooldown;
 
         dialoguePanel.SetActive(true);
-        Player.inputLocked = true;
+        Player.instance.inputLocked = true;
 
         SetCurrentLine();
     }
@@ -117,7 +117,7 @@ public class DialogueManager : MonoBehaviour
     IEnumerator UnlockPlayerNextFrame()
     {
         yield return null;
-        Player.inputLocked = false;
+        Player.instance.inputLocked = false;
     }
 
     public bool IsInDialogue()
