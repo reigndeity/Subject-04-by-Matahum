@@ -15,14 +15,15 @@ public class PlayerCamera : MonoBehaviour
     public float maxLookLeft = 360f;
     public float maxLookRight = 360f;
 
-    bool cursorLocked = true;
+    bool cursorLocked;
     float pitch;
     float yaw;
 
     void Awake()
     {
-        SetCursorState(true);
         yaw = transform.eulerAngles.y;
+        cursorLocked = false;
+        SetCursorState(true);
     }
 
     public void Look()
@@ -77,9 +78,6 @@ public class PlayerCamera : MonoBehaviour
 
     void SetCursorState(bool locked)
     {
-        if (cursorLocked == locked)
-            return;
-
         cursorLocked = locked;
         Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !locked;

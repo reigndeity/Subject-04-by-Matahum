@@ -5,9 +5,11 @@ public class CCTVController : MonoBehaviour, IInteractable
     [Header("References")]
     public Camera cctvCamera;
     public GameObject cctvPanel;
+    public GameObject objectToRotate;
 
     [Header("Interaction")]
     public float interactDistance = 3f;
+    public float interactHeight = 5f;
     public KeyCode interactKey = KeyCode.E;
 
     [Header("Control")]
@@ -41,10 +43,19 @@ public class CCTVController : MonoBehaviour, IInteractable
 
     bool isOpen;
     Transform player;
+    Outline outline;
 
     void Awake()
     {
-        Vector3 angles = transform.localEulerAngles;
+        if (objectToRotate == null)
+            objectToRotate = gameObject;
+
+        outline = GetComponent<Outline>();
+
+        if (outline != null)
+            outline.enabled = false;
+
+        Vector3 angles = objectToRotate.transform.localEulerAngles;
 
         baseYaw = NormalizeAngle(angles.y);
         basePitch = NormalizeAngle(angles.x);
@@ -69,6 +80,8 @@ public class CCTVController : MonoBehaviour, IInteractable
 
     void Update()
     {
+        UpdateOutline();
+
         if (!isOpen)
         {
             CheckInteraction();
@@ -86,6 +99,26 @@ public class CCTVController : MonoBehaviour, IInteractable
         ApplyRotation();
     }
 
+    void UpdateOutline()
+    {
+        if (outline == null || player == null)
+            return;
+
+        Vector3 cctvPosition = transform.position;
+        Vector3 playerPosition = player.position;
+
+        Vector2 cctvXZ = new Vector2(cctvPosition.x, cctvPosition.z);
+        Vector2 playerXZ = new Vector2(playerPosition.x, playerPosition.z);
+
+        float horizontalDistance = Vector2.Distance(playerXZ, cctvXZ);
+        float verticalDistance = Mathf.Abs(playerPosition.y - cctvPosition.y);
+
+        outline.enabled =
+            horizontalDistance <= interactDistance &&
+            verticalDistance <= interactHeight &&
+            !isOpen;
+    }
+
     void CheckInteraction()
     {
         if (player == null)
@@ -94,9 +127,16 @@ public class CCTVController : MonoBehaviour, IInteractable
         if (!Input.GetKeyDown(interactKey))
             return;
 
-        float distance = Vector3.Distance(player.position, transform.position);
+        Vector3 cctvPosition = transform.position;
+        Vector3 playerPosition = player.position;
 
-        if (distance <= interactDistance)
+        Vector2 cctvXZ = new Vector2(cctvPosition.x, cctvPosition.z);
+        Vector2 playerXZ = new Vector2(playerPosition.x, playerPosition.z);
+
+        float horizontalDistance = Vector2.Distance(playerXZ, cctvXZ);
+        float verticalDistance = Mathf.Abs(playerPosition.y - cctvPosition.y);
+
+        if (horizontalDistance <= interactDistance && verticalDistance <= interactHeight)
             Interact();
     }
 
@@ -108,6 +148,7 @@ public class CCTVController : MonoBehaviour, IInteractable
     void Open()
     {
         isOpen = true;
+        Player.inputLocked = true;
 
         if (cctvPanel != null)
             cctvPanel.SetActive(true);
@@ -119,12 +160,16 @@ public class CCTVController : MonoBehaviour, IInteractable
     public void Close()
     {
         isOpen = false;
+        Player.inputLocked = false;
 
         if (cctvPanel != null)
             cctvPanel.SetActive(false);
 
         if (cctvCamera != null)
             cctvCamera.gameObject.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void HandleManualControl()
@@ -193,7 +238,7 @@ public class CCTVController : MonoBehaviour, IInteractable
 
     void ApplyRotation()
     {
-        transform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+        objectToRotate.transform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
     }
 
     float NormalizeAngle(float angle)
@@ -203,4 +248,20 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         return angle;
     }
-}   
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+
+        Vector3 center = transform.position;
+        center.y -= interactHeight * 0.5f;
+
+        Vector3 size = new Vector3(
+            interactDistance * 2f,
+            interactHeight,
+            interactDistance * 2f
+        );
+
+        Gizmos.DrawWireCube(center, size);
+    }
+}

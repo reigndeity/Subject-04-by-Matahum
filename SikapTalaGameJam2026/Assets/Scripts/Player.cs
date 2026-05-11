@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static bool inputLocked;
+
     PlayerMovement playerMovement;
     PlayerCamera playerCamera;
 
@@ -14,6 +16,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         playerCamera.Look();
+
+        if (inputLocked)
+            return;
+
         playerMovement.Move();
     }
 }
