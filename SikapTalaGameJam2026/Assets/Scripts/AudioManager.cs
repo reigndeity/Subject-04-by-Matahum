@@ -34,6 +34,12 @@ public class AudioManager : MonoBehaviour
     [Header("Wall Collider SFX")]
     [SerializeField] AudioClip[] wallColliderClips;
 
+    [Header("Light Flicker SFX")]
+    [SerializeField] AudioClip[] lightFlickerClips;
+
+    [Header("Light Gone Out SFX")]
+    [SerializeField] AudioClip[] brokenLightsClips;
+
     private void Awake()
     {
         if (instance != null)
@@ -100,5 +106,21 @@ public class AudioManager : MonoBehaviour
 
         if (src == null) src = sfxSource;
         src.PlayOneShot(wallColliderClips[randomIndex]);
+    }
+
+    public void PlayLightFlickerSFX(AudioSource src)
+    {
+        int randomIndex = Random.Range(0, lightFlickerClips.Length);
+
+        if (src == null) src = sfxSource;
+        src.PlayOneShot(lightFlickerClips[randomIndex], 0.2f);
+    }
+
+    public void PlayLightGoneOutSFX(AudioSource src)
+    {
+        int randomIndex = Random.Range(0, brokenLightsClips.Length);
+
+        if (src == null) src = sfxSource;
+        src.PlayOneShot(brokenLightsClips[randomIndex], 0.2f);
     }
 }
