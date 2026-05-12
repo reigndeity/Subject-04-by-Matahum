@@ -149,7 +149,7 @@ public class CCTVController : MonoBehaviour, IInteractable
     {
         isOpen = true;
         Player.instance.inputLocked = true;
-        Player.instance.CameraMode();
+        //Player.instance.CameraMode();
 
         if (cctvPanel != null)
             cctvPanel.SetActive(true);
@@ -162,7 +162,7 @@ public class CCTVController : MonoBehaviour, IInteractable
     {
         isOpen = false;
         Player.instance.inputLocked = false;
-        Player.instance.FirstPersonMode();
+        //Player.instance.FirstPersonMode();
 
         if (cctvPanel != null)
             cctvPanel.SetActive(false);
