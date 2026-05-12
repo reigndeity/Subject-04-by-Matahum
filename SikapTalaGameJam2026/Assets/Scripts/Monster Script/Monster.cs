@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    public static Monster instance;
+
     private MonsterMovement movement;
     public bool canMove = true;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         movement = GetComponent<MonsterMovement>();

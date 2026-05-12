@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public GameObject jumpTutorial;
     public GameObject mouseTutorial;
 
+    [Header("Start Game")]
+    public Monster monster;
+
     void Awake()
     {
         instance = this;
@@ -103,6 +106,8 @@ public class GameManager : MonoBehaviour
                     "I NEED TO GET OUT OF HERE!"
                 });
                 playableDirector.Resume();
+                monster.gameObject.SetActive(true);
+                monster.canMove = true;
                 break;
         }
     }
@@ -171,20 +176,25 @@ public class GameManager : MonoBehaviour
             case 0:
                 break;
             case 1:
+                MonsterTeleporter.instance.TeleportAndMove(0);
                 break;
             case 2:
+                MonsterTeleporter.instance.TeleportAndMove(1);
                 break;
             case 3:
+                MonsterTeleporter.instance.TeleportAndMove(2);
                 break;
             case 4:
+                MonsterTeleporter.instance.TeleportAndMove(3);
                 break;
             case 5:
+                MonsterTeleporter.instance.TeleportAndMove(4);
                 break;
             case 6:
+                MonsterTeleporter.instance.TeleportAndMove(5);
                 break;
             case 7:
-                break;
-            case 8:
+                MonsterTeleporter.instance.TeleportAndMove(6);
                 break;
         }
     }

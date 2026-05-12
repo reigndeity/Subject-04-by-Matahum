@@ -113,7 +113,8 @@ public class AudioManager : MonoBehaviour
         int randomIndex = Random.Range(0, lightFlickerClips.Length);
 
         if (src == null) src = sfxSource;
-        src.PlayOneShot(lightFlickerClips[randomIndex], 0.2f);
+        src.pitch = Random.Range(0.8f, 1.2f);
+        src.PlayOneShot(lightFlickerClips[randomIndex], 0.1f);
     }
 
     public void PlayLightGoneOutSFX(AudioSource src)

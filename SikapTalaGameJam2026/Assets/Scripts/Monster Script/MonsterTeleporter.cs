@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class MonsterTeleporter : MonoBehaviour
 {
+    public static MonsterTeleporter instance;
+
     private MonsterMovement m_movement;
     public TeleportArrays[] teleportArrays;
-    public int temporaryIndex;
     public AudioSource auSource;
 
+    int currentIndex;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     private void Start()
     {
         m_movement = FindFirstObjectByType<MonsterMovement>();
@@ -18,20 +25,16 @@ public class MonsterTeleporter : MonoBehaviour
             Debug.Log("Cant see monster movement");
             return;
         }
+        if (currentIndex == index)
+        {
+            return;
+        }
+
         m_movement.transform.position = teleportArrays[index].teleportPoint.position;
 
         m_movement.pointIndex = teleportArrays[index].continueIndex;
 
         AudioManager.instance.PlayMonsterSFX();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.F))
-        {
-            Debug.Log("Space Bar");
-            TeleportAndMove(temporaryIndex);
-        }
     }
 }
 [System.Serializable]
