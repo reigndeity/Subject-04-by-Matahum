@@ -2547,7 +2547,7 @@ GameObject:
   - component: {fileID: 927547788}
   - component: {fileID: 927547787}
   m_Layer: 0
-  m_Name: Randall_PP
+  m_Name: CRT_TV_PostProcess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -53,7 +53,12 @@ public class MainMenu_Manager : MonoBehaviour
 
         UpdateSensitivityText();
 
-        canvasGroupFade.Fade(1f, 0f, 1f);
+        StartCoroutine(FadeNextFrame());
+    }
+    IEnumerator FadeNextFrame()
+    {
+        yield return null;
+        canvasGroupFade.Fade(1f, 0f, 1f);   
     }
     public void OnClickStart()
     {
