@@ -2913,42 +2913,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: brokenLightsClips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: lightFlickerClips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'brokenLightsClips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 880351017825b24489865a00d4ae736a, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'brokenLightsClips.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 6877cee184ecdba4192b873756b32df5, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'brokenLightsClips.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 6d395587414310c419f50c0c731851e6, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'lightFlickerClips.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 19da18b271f6ed34e82fb02c406f9398, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'lightFlickerClips.Array.data[1]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 685d30470f95f6c42a2ffd99f4e2ac8d, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'lightFlickerClips.Array.data[2]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 4eeeec8eec908e546a824611f134ce31, type: 3}
-    - target: {fileID: 7541466490520186438, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
-      propertyPath: 'lightFlickerClips.Array.data[3]'
-      value: 
-      objectReference: {fileID: 8300000, guid: 4eeeec8eec908e546a824611f134ce31, type: 3}
     - target: {fileID: 7892776390296279863, guid: dc3cfe3aa72867c459c264ada50ae7e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.38336
