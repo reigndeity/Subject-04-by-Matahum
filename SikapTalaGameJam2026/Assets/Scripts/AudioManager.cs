@@ -46,6 +46,11 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+    public void PlayButtonClickSFX()
+    {
+        int randomIndex = Random.Range(0, buttonClicksClips.Length);
+        sfxSource.PlayOneShot(buttonClicksClips[randomIndex]);
+    }
     public void PlayDialogueBeepSFX()
     {
         int randomIndex = Random.Range(0, dialogueClips.Length);
