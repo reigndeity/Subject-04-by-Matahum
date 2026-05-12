@@ -70,6 +70,7 @@ public class DialogueManager : MonoBehaviour
 
         dialoguePanel.SetActive(true);
         Player.instance.inputLocked = true;
+        Player.instance.StopMovement();
 
         SetCurrentLine();
     }

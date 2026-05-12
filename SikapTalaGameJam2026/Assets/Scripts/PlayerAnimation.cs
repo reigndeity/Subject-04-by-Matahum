@@ -4,7 +4,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
 
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
     }

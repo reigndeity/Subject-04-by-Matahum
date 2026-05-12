@@ -156,6 +156,7 @@ public class CCTVController : MonoBehaviour, IInteractable
     {
         isOpen = true;
         Player.instance.inputLocked = true;
+        Player.instance.StopMovement();
 
         AudioManager.instance.PlayCameraOnSFX();
 

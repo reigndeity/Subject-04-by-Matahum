@@ -42,4 +42,9 @@ public class Player : MonoBehaviour
         skinnedMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         skinnedMeshRenderer.gameObject.layer = LayerMask.NameToLayer("Invisible");
     }
+
+    public void StopMovement()
+    {
+        playerMovement.Stop();
+    }
 }

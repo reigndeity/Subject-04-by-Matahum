@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [Header("Cutscenes")]
     public PlayableDirector playableDirector;
     public PlayableAsset cutscene1;
-    public PlayableAsset cutscene2;
 
     [Header("Tutorials")]
     public GameObject movementTutorial;
@@ -23,25 +22,12 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(StartGame());
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            StartCoroutine(StartGame());
-        }
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            playableDirector.playableAsset = cutscene2;
-            playableDirector.Play();
-        }
-    }
-
     IEnumerator StartGame()
     {
         Player.instance.inputLocked = true;
+        Player.instance.StopMovement();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

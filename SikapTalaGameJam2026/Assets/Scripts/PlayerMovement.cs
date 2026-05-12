@@ -132,4 +132,21 @@ public class PlayerMovement : MonoBehaviour
     {
         isLanding = false;
     }
+    public void Stop()
+    {
+        controller.Move(Vector3.down * 100f);
+
+        verticalVelocity = groundedForce;
+
+        isJumping = false;
+        isFalling = false;
+        isLanding = false;
+
+        wasGrounded = true;
+
+        CancelInvoke(nameof(EndLanding));
+
+        anim.PlayIdleAnim();
+    }
+    
 }
