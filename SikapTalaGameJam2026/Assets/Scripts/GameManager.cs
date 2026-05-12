@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public CanvasGroupFade canvasGroupFade;
+    public CanvasGroupFade savingCanvasGroupFade;
     public int checkpointIndex;
 
     public Transform player;
@@ -140,6 +141,14 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("CheckpointZ", pos.z);
 
         PlayerPrefs.Save();
+
+        StartCoroutine(Saving());
+    }
+    IEnumerator Saving()
+    {
+        savingCanvasGroupFade.Fade(0f, 1f, 0.5f);
+        yield return new WaitForSeconds(1f);
+        savingCanvasGroupFade.Fade(1f, 0f, 0.5f);
     }
 
     public void Load()
