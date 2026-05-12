@@ -146,7 +146,7 @@ Material:
     - _AOContrast: 1
     - _AOMapEnabled: 0
     - _AOMapStrength: 1
-    - _AdvancedConfigurationEnabled: 0
+    - _AdvancedConfigurationEnabled: 1
     - _AffectedByLightmaps: 0
     - _AlbedoVertexColorMode: 1
     - _AlbedoVertexColorOn: 0
@@ -176,7 +176,7 @@ Material:
     - _Contrast: 1
     - _ContrastBrightnessOn: 0
     - _ContrastLM: 1
-    - _CullingMode: 2
+    - _CullingMode: 0
     - _CustomAmbientLightOn: 0
     - _CustomShadowColorOn: 0
     - _DepthColoringOn: 0

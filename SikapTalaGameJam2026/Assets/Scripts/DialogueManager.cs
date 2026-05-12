@@ -118,6 +118,8 @@ public class DialogueManager : MonoBehaviour
     {
         yield return null;
         Player.instance.inputLocked = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public bool IsInDialogue()

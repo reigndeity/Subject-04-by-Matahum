@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DangleBehavior
   m_EditorClassIdentifier: Febucci.TextAnimator.Runtime::Febucci.UI.Effects.DangleBehavior
   tagID: dangle
-  baseAmplitude: 7.87
-  baseFrequency: 3.37
-  baseWaveSize: 0.306
+  baseAmplitude: -6.03
+  baseFrequency: -3.05
+  baseWaveSize: 0.1
   anchorBottom: 0

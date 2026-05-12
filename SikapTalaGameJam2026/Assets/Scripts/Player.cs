@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        playerCamera.Look();
+        if (!inputLocked)
+            playerCamera.Look();
 
         if (inputLocked)
             return;
