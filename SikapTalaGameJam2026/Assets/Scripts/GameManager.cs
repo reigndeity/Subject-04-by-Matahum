@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        playableDirector.playableAsset = null;
     }
 
     void Start()
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
                 yield return DialogueManager.instance.PlayDialogue(new string[]
                 {
                     "Huh?",
-                    "What's that?!"
+                    "What the hell is that?!"
                 });
                 playableDirector.Resume();
                 break;
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
             case 3:
                 yield return DialogueManager.instance.PlayDialogue(new string[]
                 {
-                    "IT'S COMING TOWARDS ME!!",
+                    "IT'S COMING TOWARDS ME!",
                     "I NEED TO RUN!"
                 });
                 playableDirector.Resume();
