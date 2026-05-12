@@ -32,6 +32,9 @@ public class CCTVController : MonoBehaviour, IInteractable
     public float horizontalAutoSpeed = 30f;
     public float verticalAutoSpeed = 15f;
 
+    [Header("Audio Source")]
+    private AudioSource src;
+
     float yaw;
     float pitch;
 
@@ -42,11 +45,15 @@ public class CCTVController : MonoBehaviour, IInteractable
     int verticalDirection = 1;
 
     bool isOpen;
+    bool isPanning;
     Transform player;
     Outline outline;
 
     void Awake()
     {
+        src = GetComponent<AudioSource>();
+        if(src == null ) src = gameObject.AddComponent<AudioSource>();
+
         if (objectToRotate == null)
             objectToRotate = gameObject;
 
@@ -149,7 +156,8 @@ public class CCTVController : MonoBehaviour, IInteractable
     {
         isOpen = true;
         Player.instance.inputLocked = true;
-        //Player.instance.CameraMode();
+
+        AudioManager.instance.PlayCameraOnSFX();
 
         if (cctvPanel != null)
             cctvPanel.SetActive(true);
@@ -163,6 +171,8 @@ public class CCTVController : MonoBehaviour, IInteractable
         isOpen = false;
         Player.instance.inputLocked = false;
         //Player.instance.FirstPersonMode();
+
+        AudioManager.instance.PlayCameraOffSFX();
 
         if (cctvPanel != null)
             cctvPanel.SetActive(false);
@@ -191,6 +201,24 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         yaw += horizontal * rotationSpeed * Time.deltaTime;
         pitch -= vertical * rotationSpeed * Time.deltaTime;
+
+        Vector2 movement = new Vector2(horizontal, vertical).normalized;
+
+        bool moving = movement.magnitude > 0f;
+
+        // Started moving
+        if (moving && !isPanning)
+        {
+            isPanning = true;
+            AudioManager.instance.PlayCameraStartPanningSFX(src);
+        }
+
+        // Stopped moving
+        if (!moving && isPanning)
+        {
+            isPanning = false;
+            AudioManager.instance.StopCameraStopPanningSFX(src);
+        }
 
         ClampRotation();
     }

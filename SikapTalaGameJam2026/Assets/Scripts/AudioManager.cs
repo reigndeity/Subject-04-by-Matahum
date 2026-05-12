@@ -54,31 +54,46 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMonsterSFX()
     {
-        int randomIndex = Random.Range(0, dialogueClips.Length);
-        sfxSource.PlayOneShot(dialogueClips[randomIndex]);
+        int randomIndex = Random.Range(0, monsterClips.Length);
+        sfxSource.PlayOneShot(monsterClips[randomIndex]);
     }
 
     public void PlayFootstepsSFX()
     {
-        int randomIndex = Random.Range(0, dialogueClips.Length);
-        sfxSource.PlayOneShot(dialogueClips[randomIndex]);
+        int randomIndex = Random.Range(0, footstepsClips.Length);
+        sfxSource.PlayOneShot(footstepsClips[randomIndex]);
     }
 
-    public void PlayCameraSFX()
+    public void PlayCameraOnSFX()
     {
-        int randomIndex = Random.Range(0, dialogueClips.Length);
-        sfxSource.PlayOneShot(dialogueClips[randomIndex]);
+        sfxSource.PlayOneShot(cameraClips[0]);
+    }
+    public void PlayCameraOffSFX()
+    {
+        sfxSource.PlayOneShot(cameraClips[1]);
+    }
+    public void PlayCameraStartPanningSFX(AudioSource src)
+    {
+        src.clip = cameraClips[2];
+        src.Play();
+    }
+
+    public void StopCameraStopPanningSFX(AudioSource src)
+    {
+        src.Stop();
     }
 
     public void PlayTVSFX()
     {
-        int randomIndex = Random.Range(0, dialogueClips.Length);
-        sfxSource.PlayOneShot(dialogueClips[randomIndex]);
+        int randomIndex = Random.Range(0, tvClips.Length);
+        sfxSource.PlayOneShot(tvClips[randomIndex]);
     }
 
-    public void PlayWallColliderSFX()
+    public void PlayWallColliderSFX(AudioSource src)
     {
-        int randomIndex = Random.Range(0, dialogueClips.Length);
-        sfxSource.PlayOneShot(dialogueClips[randomIndex]);
+        int randomIndex = Random.Range(0, wallColliderClips.Length);
+
+        if (src == null) src = sfxSource;
+        src.PlayOneShot(wallColliderClips[randomIndex]);
     }
 }

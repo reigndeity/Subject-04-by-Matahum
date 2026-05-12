@@ -3,7 +3,47 @@ guid: 29b537b7eee4b6c469537c0ba6f47769
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: 938929a42371b0945849b45745b9f19c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base.001
+    second: {fileID: 2100000, guid: a6571d027f80c8348b133424186a4eeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Dome
+    second: {fileID: 2100000, guid: 937e5a36ce14b064d80681a7cdbc2704, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: b9e072965130e2f42b2639b632aa7a11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 20b5b16ac3a3f1e4eb0716c49af244a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 49f066c81cf09814bab096b6588d8977, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red
+    second: {fileID: 2100000, guid: 3328635a313c2e041aa7a49eae5be6f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red Dot
+    second: {fileID: 2100000, guid: f2a000538e2ba7c4cbbac72266ef85a7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
