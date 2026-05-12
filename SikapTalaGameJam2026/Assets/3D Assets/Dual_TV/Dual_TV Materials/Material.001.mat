@@ -28,11 +28,12 @@ Material:
   - _ALPHA_CUTOFF_ON
   - _CAST_SHADOWS_ON
   - _COLORRAMPLIGHTINGSTAGE_BEFORELIGHTING
+  - _DITHER_ON
   - _GREYSCALESTAGE_BEFORELIGHTING
+  - _HOLOGRAM_ON
   - _LIGHTMODEL_CLASSIC
   - _MATCAPBLENDMODE_MULTIPLY
   - _OUTLINETYPE_NONE
-  - _PIXELATE_ON
   - _RECEIVE_SHADOWS_ON
   - _REFLECTIONS_NONE
   - _RIMLIGHTINGSTAGE_BEFORELIGHTING
@@ -52,7 +53,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -242,7 +243,7 @@ Material:
     - _ContrastBrightnessOn: 0
     - _ContrastLM: 1
     - _Cull: 2
-    - _CullingMode: 2
+    - _CullingMode: 0
     - _CustomAmbientLightOn: 0
     - _CustomShadowColorOn: 0
     - _Cutoff: 0.5
@@ -256,7 +257,7 @@ Material:
     - _DistortAmount: 0.3
     - _DistortTexXSpeed: 2
     - _DistortTexYSpeed: 2
-    - _DitherOn: 0
+    - _DitherOn: 1
     - _DitherScale: 1
     - _DstBlend: 10
     - _DstBlendAlpha: 10
@@ -299,16 +300,16 @@ Material:
     - _Hit: 0
     - _HitBlend: 1
     - _HitGlow: 5
-    - _Hologram: 0
+    - _Hologram: 1
     - _HologramAccentAlpha: 0.5
     - _HologramAccentFrequency: 2
     - _HologramAccentSpeed: 1
     - _HologramAlpha: 1
     - _HologramBaseAlpha: 0.1
     - _HologramFrequency: 20
-    - _HologramLineCenter: 0.5
-    - _HologramLineSmoothness: 2
-    - _HologramLineSpacing: 2
+    - _HologramLineCenter: 0
+    - _HologramLineSmoothness: 3
+    - _HologramLineSpacing: 2.5
     - _HologramScrollSpeed: 2
     - _HueBrightness: 1
     - _HueBrightnessLM: 1
@@ -345,7 +346,7 @@ Material:
     - _OcclusionStrength: 1
     - _OutlineType: 0
     - _Parallax: 0.02
-    - _Pixelate: 1
+    - _Pixelate: 0
     - _PixelateSize: 100
     - _Posterize: 0
     - _PosterizeGamma: 0.75
@@ -425,11 +426,11 @@ Material:
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZTestMode: 4
-    - _ZWrite: 0
+    - _ZWrite: 1
     m_Colors:
     - _AOColor: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 0.42423597, g: 0.4873559, b: 0.7312301, a: 0.21818179}
-    - _Color: {r: 0.42423594, g: 0.48735583, b: 0.7312301, a: 0.21818179}
+    - _Color: {r: 0.4242359, g: 0.4873557, b: 0.7312301, a: 0.27450982}
     - _CustomAmbientColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
     - _DepthGlowColor: {r: 1, g: 0.9869999, b: 0.6, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
@@ -441,7 +442,7 @@ Material:
     - _HighlightOffset: {r: 0, g: 0, b: 0, a: 0}
     - _HighlightsColor: {r: 2, g: 2, b: 2, a: 1}
     - _HitColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HologramColor: {r: 1.25, g: 2.8, b: 6.8, a: 1}
+    - _HologramColor: {r: 9.078535, g: 9.078535, b: 9.078535, a: 1}
     - _HologramLineDirection: {r: 0, g: 1, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimOffset: {r: 0, g: 0, b: 0, a: 0}
