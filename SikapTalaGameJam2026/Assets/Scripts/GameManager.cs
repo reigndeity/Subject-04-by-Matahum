@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Tutorials")]
     public GameObject movementTutorial;
+    public GameObject jumpTutorial;
+    public GameObject mouseTutorial;
 
     void Awake()
     {
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartGame());
+        //StartCoroutine(StartGame());
     }
     IEnumerator StartGame()
     {
@@ -108,5 +110,11 @@ public class GameManager : MonoBehaviour
         Player.instance.inputLocked = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    public void DisableTutorial()
+    {
+        movementTutorial.SetActive(false);
+        jumpTutorial.SetActive(false);
+        mouseTutorial.SetActive(false);
     }
 }

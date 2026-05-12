@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 
 public class CutsceneTrigger : MonoBehaviour
 {
     private PlayableDirector playableDirector;
     public PlayableAsset cutscene;
+    public UnityEvent onCutsceneStart;
     void Start()
     {
         playableDirector = GameManager.instance.playableDirector;
@@ -14,6 +16,7 @@ public class CutsceneTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            onCutsceneStart.Invoke();
             TriggerCutscene(cutscene);
             this.gameObject.SetActive(false);
         }
