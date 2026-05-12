@@ -5,6 +5,7 @@ public class MonsterTeleporter : MonoBehaviour
     private MonsterMovement m_movement;
     public TeleportArrays[] teleportArrays;
     public int temporaryIndex;
+    public AudioSource auSource;
 
     private void Start()
     {
@@ -20,6 +21,8 @@ public class MonsterTeleporter : MonoBehaviour
         m_movement.transform.position = teleportArrays[index].teleportPoint.position;
 
         m_movement.pointIndex = teleportArrays[index].continueIndex;
+
+        AudioManager.instance.PlayMonsterSFX();
     }
 
     private void Update()
