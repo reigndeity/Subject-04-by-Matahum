@@ -5,6 +5,8 @@ using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
     [Header("Cutscenes")]
     public PlayableDirector playableDirector;
     public PlayableAsset cutscene1;
@@ -13,9 +15,13 @@ public class GameManager : MonoBehaviour
     [Header("Tutorials")]
     public GameObject movementTutorial;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
-        
     }
 
     void Update()
@@ -24,12 +30,14 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(StartGame());
         }
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             playableDirector.playableAsset = cutscene2;
             playableDirector.Play();
         }
     }
+
     IEnumerator StartGame()
     {
         Player.instance.inputLocked = true;
@@ -55,9 +63,10 @@ public class GameManager : MonoBehaviour
         playableDirector.Pause();
         StartCoroutine(DoingCCTVTutorial(current));
     }
-    IEnumerator DoingCCTVTutorial(int current) 
+
+    IEnumerator DoingCCTVTutorial(int current)
     {
-        switch (current) 
+        switch (current)
         {
             case 0:
                 yield return DialogueManager.instance.PlayDialogue(new string[]
@@ -67,6 +76,7 @@ public class GameManager : MonoBehaviour
                 });
                 playableDirector.Resume();
                 break;
+
             case 1:
                 yield return DialogueManager.instance.PlayDialogue(new string[]
                 {
@@ -75,7 +85,41 @@ public class GameManager : MonoBehaviour
                 });
                 playableDirector.Resume();
                 break;
-        }
 
+            case 2:
+                yield return DialogueManager.instance.PlayDialogue(new string[]
+                {
+                    "What the?!",
+                    "I can't see it!",
+                    "AM I GOING INSANE?!"
+                });
+                playableDirector.Resume();
+                break;
+
+            case 3:
+                yield return DialogueManager.instance.PlayDialogue(new string[]
+                {
+                    "IT'S COMING TOWARDS ME!!",
+                    "I NEED TO RUN!"
+                });
+                playableDirector.Resume();
+                break;
+        }
+    }
+
+    public bool IsCutscenePlaying()
+    {
+        if (playableDirector == null || playableDirector.playableAsset == null)
+            return false;
+
+        return playableDirector.time > 0 &&
+            playableDirector.time < playableDirector.duration;
+    }
+
+    public void UnlockPlayer()
+    {
+        Player.instance.inputLocked = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

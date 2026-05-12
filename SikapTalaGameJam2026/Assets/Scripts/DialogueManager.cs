@@ -117,7 +117,12 @@ public class DialogueManager : MonoBehaviour
     IEnumerator UnlockPlayerNextFrame()
     {
         yield return null;
+
+        if (GameManager.instance != null && GameManager.instance.IsCutscenePlaying())
+            yield break;
+
         Player.instance.inputLocked = false;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

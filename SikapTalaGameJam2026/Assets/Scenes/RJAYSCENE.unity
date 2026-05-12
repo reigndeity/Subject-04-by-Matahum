@@ -568,7 +568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 330585546}
   - component: {fileID: 330585545}
-  - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   m_Layer: 0
@@ -578,14 +577,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!81 &330585544
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
 --- !u!20 &330585545
 Camera:
   m_ObjectHideFlags: 0
@@ -646,11 +637,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000029802326, y: 0.000000010536712, z: -0.000000010536714, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 0.6}
+  m_LocalPosition: {x: 0, y: 2.385, z: 4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1432702938833303377}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -3417,6 +3408,12 @@ PlayableDirector:
     value: {fileID: 330585543}
   - key: {fileID: 7484224255367614020, guid: f93a717653a42b846ae21385a3df3308, type: 2}
     value: {fileID: 330585548}
+  - key: {fileID: -5129736791917111868, guid: f93a717653a42b846ae21385a3df3308, type: 2}
+    value: {fileID: 3120138888599325902}
+  - key: {fileID: -7991794217755504252, guid: f93a717653a42b846ae21385a3df3308, type: 2}
+    value: {fileID: 7838341192307075080}
+  - key: {fileID: -6668531960336684800, guid: f93a717653a42b846ae21385a3df3308, type: 2}
+    value: {fileID: 367173476}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1820442699
@@ -3435,6 +3432,9 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 67d60543b0ec5474aac9359f5a940e5a, type: 2}
     - {fileID: 11400000, guid: a18c9a97d8d93944ab476f2a2084629d, type: 2}
+    - {fileID: 11400000, guid: 2f03888f4c2446545a018efedf50f69f, type: 2}
+    - {fileID: 11400000, guid: 26b1b65158d786841963751dd047294c, type: 2}
+    - {fileID: 11400000, guid: f3e3f35317c0ade4c9f681f2f47b6212, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -3460,6 +3460,48 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1319132497}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: CCTVTutorial
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1319132497}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: CCTVTutorial
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1319132497}
+          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+          m_MethodName: UnlockPlayer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -4857,7 +4899,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 330585546}
   - {fileID: 1386766383}
   - {fileID: 2532952859942160988}
   - {fileID: 558235340030854968}
@@ -10077,6 +10118,7 @@ SceneRoots:
   - {fileID: 893131558}
   - {fileID: 480453649}
   - {fileID: 1812255649}
+  - {fileID: 330585546}
   - {fileID: 882692396}
   - {fileID: 1907260754}
   - {fileID: 1398382299}
