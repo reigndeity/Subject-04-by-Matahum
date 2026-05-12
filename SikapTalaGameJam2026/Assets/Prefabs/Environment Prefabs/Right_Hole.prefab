@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7724649657054295021}
   - component: {fileID: 3120686845308773044}
   - component: {fileID: 2675626290979683261}
-  m_Layer: 0
+  - component: {fileID: 5739159726090228183}
+  m_Layer: 6
   m_Name: Right_Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +92,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5739159726090228183
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844181548959754841}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5335373556399802719, guid: 33ecc0449f635234fb0a23f167748a8b, type: 3}
 --- !u!1 &7457253376087544070
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +125,7 @@ GameObject:
   - component: {fileID: 6538940100798042318}
   - component: {fileID: 8578589651576415696}
   - component: {fileID: 1532767907889137548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpotLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
