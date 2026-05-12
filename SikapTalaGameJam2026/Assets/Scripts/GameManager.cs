@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
                 yield return DialogueManager.instance.PlayDialogue(new string[]
                 {
                     "IT'S COMING TOWARDS ME!",
-                    "I NEED TO RUN!"
+                    "I NEED TO GET OUT OF HERE!"
                 });
                 playableDirector.Resume();
                 break;

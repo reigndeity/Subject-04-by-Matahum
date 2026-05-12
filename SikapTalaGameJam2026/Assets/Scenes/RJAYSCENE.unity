@@ -5482,6 +5482,7 @@ Transform:
   - {fileID: 1928126106}
   - {fileID: 310235589}
   - {fileID: 989685127}
+  - {fileID: 543450653589904266}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1407606174
@@ -9192,6 +9193,11 @@ Transform:
   - {fileID: 2948734730262380504}
   m_Father: {fileID: 4271613640608153517}
   m_LocalEulerAnglesHint: {x: -19.629585, y: -0.5260336, z: 2.9208283}
+--- !u!4 &543450653589904266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+  m_PrefabInstance: {fileID: 2166385403270973246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &558235340030854968
 Transform:
   m_ObjectHideFlags: 0
@@ -10765,6 +10771,75 @@ Transform:
   - {fileID: 6068904346952587147}
   m_Father: {fileID: 3744890396221142665}
   m_LocalEulerAnglesHint: {x: 29.846853, y: -3.7168295, z: -0.00033910418}
+--- !u!1001 &2166385403270973246
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1398382299}
+    m_Modifications:
+    - target: {fileID: 15851561575615919, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_Name
+      value: Caution Wet Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -14.734
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000003774895
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1.11022296e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -1.11022296e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5923113580939098660, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777135520503576220, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_Size.z
+      value: 0.011610999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777135520503576220, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_Center.x
+      value: 1.3310798e-25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6777135520503576220, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00255979
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 25d8b6611e7fe2e46a7bf56b71237206, type: 3}
 --- !u!1 &2202048558233968448
 GameObject:
   m_ObjectHideFlags: 0
@@ -10822,7 +10897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7101981719089069050}
   - component: {fileID: 3802972432634202669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy(Model)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13677,7 +13752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7245535153142015484}
   - component: {fileID: 3118674614657618758}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Eye_MONSTAH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
