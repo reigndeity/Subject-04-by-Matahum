@@ -6,7 +6,10 @@ using UnityEngine.Playables;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public CanvasGroupFade canvasGroupFade;
+    public int checkpointIndex;
 
+    public Transform player;
     [Header("Cutscenes")]
     public PlayableDirector playableDirector;
     public PlayableAsset cutscene1;
@@ -25,6 +28,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //StartCoroutine(StartGame());
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Death();
+        }
     }
     IEnumerator StartGame()
     {
@@ -116,5 +126,78 @@ public class GameManager : MonoBehaviour
         movementTutorial.SetActive(false);
         jumpTutorial.SetActive(false);
         mouseTutorial.SetActive(false);
+    }
+
+    public void Save(int index)
+    {
+        checkpointIndex = index;
+        PlayerPrefs.SetInt("CheckpointIndex", checkpointIndex);
+
+        Vector3 pos = player.position;
+
+        PlayerPrefs.SetFloat("CheckpointX", pos.x);
+        PlayerPrefs.SetFloat("CheckpointY", pos.y);
+        PlayerPrefs.SetFloat("CheckpointZ", pos.z);
+
+        PlayerPrefs.Save();
+    }
+
+    public void Load()
+    {
+        if (!PlayerPrefs.HasKey("CheckpointX"))
+            return;
+
+        checkpointIndex = PlayerPrefs.GetInt("CheckpointIndex", 0);
+
+        Vector3 pos = new Vector3(
+            PlayerPrefs.GetFloat("CheckpointX"),
+            PlayerPrefs.GetFloat("CheckpointY"),
+            PlayerPrefs.GetFloat("CheckpointZ")
+        );
+
+        player.SetPositionAndRotation(pos, Quaternion.LookRotation(Vector3.forward));
+
+        switch (checkpointIndex)
+        {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+        }
+    }
+
+    public void Death()
+    {
+        StartCoroutine(Dying());
+    }
+    public IEnumerator Dying()
+    {
+        Player.instance.inputLocked = true;
+        Player.instance.StopMovement();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        canvasGroupFade.Fade(0f, 1f, 1f);
+
+        yield return new WaitForSeconds(1.5f);
+        Load();
+        yield return new WaitForSeconds(1f);
+        canvasGroupFade.Fade(1f, 0f, 1f);
+        yield return new WaitForSeconds(1f);
+        UnlockPlayer();  
     }
 }
