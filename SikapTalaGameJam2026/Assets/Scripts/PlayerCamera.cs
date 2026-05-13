@@ -22,6 +22,7 @@ public class PlayerCamera : MonoBehaviour
     void Awake()
     {
         yaw = transform.eulerAngles.y;
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
         cursorLocked = false;
         SetCursorState(true);
     }

@@ -186,6 +186,7 @@ public class GameManager : MonoBehaviour
             case 0:
                 MonsterTeleporter.instance.TeleportAndMove(0);
                 OptimizeTV(0, true);
+                Debug.Log("OPTIMIZE TV");
                 break;
             case 1:
                 MonsterTeleporter.instance.TeleportAndMove(1);
@@ -280,6 +281,20 @@ public class GameManager : MonoBehaviour
         {
             tv_Opt[index].tv_Opt[i].SetCameras(toggleTV);
         }
+    }
+
+    public void EndGame()
+    {
+        StartCoroutine(EndingGame());
+    }
+    IEnumerator EndingGame()
+    {
+        Player.instance.inputLocked = true;
+        Player.instance.StopMovement();
+        canvasGroupFade.Fade(0f, 1f, 0.5f);
+        monster.canMove = false;
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("EndCutscene");
     }
 }
 

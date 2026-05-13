@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CCTVController : MonoBehaviour, IInteractable
@@ -148,7 +149,12 @@ public class CCTVController : MonoBehaviour, IInteractable
             outline.enabled = canInteract;
 
         if (interactText != null)
+        {
             interactText.SetActive(canInteract);
+
+            if (canInteract)
+                interactText.GetComponent<TextMeshProUGUI>().text = "Press <color=yellow>E</color> to interact with the CCTV";
+        }
     }
 
     void CheckInteraction()

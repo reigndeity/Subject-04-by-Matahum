@@ -27,6 +27,8 @@ public class MainMenu_Manager : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         startButton.onClick.AddListener(OnClickStart);
         settingsButton.onClick.AddListener(OnClickSettings);
         sensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderChanged);
@@ -34,6 +36,13 @@ public class MainMenu_Manager : MonoBehaviour
         backToMenuFromSettingsButton.onClick.AddListener(OnClickBackToMenuFromSettings);
         cancelExitButton.onClick.AddListener(OnClickCancelExit);
         confirmExitButton.onClick.AddListener(OnClickConfirmExt);
+
+        // Clear checkpoint data when starting the game from the main menu
+        PlayerPrefs.DeleteKey("CheckpointIndex");
+        PlayerPrefs.DeleteKey("CheckpointX");
+        PlayerPrefs.DeleteKey("CheckpointY");
+        PlayerPrefs.DeleteKey("CheckpointZ");
+        PlayerPrefs.Save();
     }
 
     void Start()
