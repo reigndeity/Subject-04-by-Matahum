@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(StartGame());
+        StartCoroutine(StartGame());
         confirmRestartButton.onClick.AddListener(ConfirmRestart);
         cancelRestartButton.onClick.AddListener(ConfirmCancelRestart);
     }
