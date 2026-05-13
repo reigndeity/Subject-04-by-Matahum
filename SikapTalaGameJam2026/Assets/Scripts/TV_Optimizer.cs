@@ -23,7 +23,7 @@ public class TV_Optimizer : MonoBehaviour
         SetCameras(false);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (player == null)
             return;
@@ -40,9 +40,9 @@ public class TV_Optimizer : MonoBehaviour
         {
             SetCameras(shouldRender);
         }
-    }
+    }*/
 
-    void SetCameras(bool state)
+    public void SetCameras(bool state)
     {
         camerasActive = state;
 

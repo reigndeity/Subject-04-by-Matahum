@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Start Game")]
     public Monster monster;
+
+    [Header("TV Optimizer")]
+    public TV_Opt[] tv_Opt;
 
     void Awake()
     {
@@ -181,6 +185,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 MonsterTeleporter.instance.TeleportAndMove(0);
+                OptimizeTV(0, true);
                 break;
             case 1:
                 MonsterTeleporter.instance.TeleportAndMove(1);
@@ -190,18 +195,23 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 MonsterTeleporter.instance.TeleportAndMove(3);
+                OptimizeTV(1, true);
+                OptimizeTV(0, false);
                 break;
             case 4:
                 MonsterTeleporter.instance.TeleportAndMove(4);
                 break;
             case 5:
                 MonsterTeleporter.instance.TeleportAndMove(5);
+                OptimizeTV(1, false);
                 break;
             case 6:
                 MonsterTeleporter.instance.TeleportAndMove(6);
+                OptimizeTV(2, true);
                 break;
             case 7:
                 MonsterTeleporter.instance.TeleportAndMove(7);
+                OptimizeTV(3, true);
                 break;
         }
     }
@@ -261,4 +271,20 @@ public class GameManager : MonoBehaviour
         monster.gameObject.SetActive(true);
         monster.canMove = true;
     }
+
+    public void OptimizeTV(int index, bool toggleTV)
+    {
+        int count = tv_Opt[index].tv_Opt.Length;
+
+        for (int i = 0; i < count; i++)
+        {
+            tv_Opt[index].tv_Opt[i].SetCameras(toggleTV);
+        }
+    }
+}
+
+[System.Serializable]
+public class TV_Opt
+{
+    public TV_Optimizer[] tv_Opt;
 }
