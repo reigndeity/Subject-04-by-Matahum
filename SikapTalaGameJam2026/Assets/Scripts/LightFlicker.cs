@@ -53,6 +53,11 @@ public class LightFlicker : MonoBehaviour
         );
 
         flickerCoroutine = StartCoroutine(FlickerInterval());
+
+        if (isFlickering)
+        {
+            AudioManager.instance.PlayLightAmbienceSFX(src);
+        }
     }
 
     IEnumerator FlickerInterval()

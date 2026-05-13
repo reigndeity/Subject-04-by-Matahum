@@ -108,13 +108,19 @@ public class AudioManager : MonoBehaviour
         src.PlayOneShot(wallColliderClips[randomIndex]);
     }
 
+    public void PlayLightAmbienceSFX(AudioSource src)
+    {
+        if (src == null) src = sfxSource;
+        src.clip = lightFlickerClips[0];
+        src.Play();
+        src.loop = true;
+    }
+
     public void PlayLightFlickerSFX(AudioSource src)
     {
-        int randomIndex = Random.Range(0, lightFlickerClips.Length);
-
         if (src == null) src = sfxSource;
         src.pitch = Random.Range(0.8f, 1.2f);
-        src.PlayOneShot(lightFlickerClips[randomIndex], 0.1f);
+        src.PlayOneShot(lightFlickerClips[1], 0.2f);
     }
 
     public void PlayLightGoneOutSFX(AudioSource src)

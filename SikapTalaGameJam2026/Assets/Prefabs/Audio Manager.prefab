@@ -339,9 +339,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 071806c94c79dc14a865b12ae60181bd, type: 3}
   - {fileID: 8300000, guid: fd11cf763adc16e48860a4504225fdd8, type: 3}
   lightFlickerClips:
-  - {fileID: 8300000, guid: 19da18b271f6ed34e82fb02c406f9398, type: 3}
-  - {fileID: 8300000, guid: 685d30470f95f6c42a2ffd99f4e2ac8d, type: 3}
-  - {fileID: 8300000, guid: 4eeeec8eec908e546a824611f134ce31, type: 3}
+  - {fileID: 8300000, guid: 4f7896c999289674087570a1154c7480, type: 3}
   brokenLightsClips:
   - {fileID: 8300000, guid: 880351017825b24489865a00d4ae736a, type: 3}
   - {fileID: 8300000, guid: 6877cee184ecdba4192b873756b32df5, type: 3}
