@@ -49,8 +49,6 @@ public class AudioManager : MonoBehaviour
         }
 
         instance = this;
-
-        DontDestroyOnLoad(gameObject);
     }
     public void PlayButtonClickSFX()
     {
