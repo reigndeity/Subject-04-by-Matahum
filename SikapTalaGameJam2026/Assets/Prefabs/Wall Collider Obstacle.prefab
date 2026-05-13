@@ -96,8 +96,10 @@ GameObject:
   - component: {fileID: 4774418748396132044}
   - component: {fileID: 2774998878164550710}
   - component: {fileID: 2498979715170709984}
+  - component: {fileID: 3831479213084116676}
+  - component: {fileID: 7469723589527479577}
   m_Layer: 0
-  m_Name: Wall (2)
+  m_Name: Death Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,6 +177,39 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3831479213084116676
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166074461998008488}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0018172637, y: 0.04, z: 0.04}
+  m_Center: {x: -0.02037991, y: 0, z: 0.02}
+--- !u!114 &7469723589527479577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166074461998008488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efb21a04eaf95d4a8733bba206b46c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallCollisionDeath
 --- !u!1 &2497959160392706287
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faee2999fd3021740989da9bc2450f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallColliderObstacle
+  animInterval: 0
 --- !u!82 &7804093664602748308
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1015,8 +1051,10 @@ GameObject:
   - component: {fileID: 7714116353452524222}
   - component: {fileID: 9057629566078513373}
   - component: {fileID: 4784416651726817112}
+  - component: {fileID: 7531790919726293155}
+  - component: {fileID: 83355391695472553}
   m_Layer: 0
-  m_Name: Wall (3)
+  m_Name: Death WAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,6 +1132,39 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7531790919726293155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8771294293904102687}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0018172637, y: 0.04, z: 0.04}
+  m_Center: {x: -0.02037991, y: 0, z: 0.02}
+--- !u!114 &83355391695472553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8771294293904102687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4efb21a04eaf95d4a8733bba206b46c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WallCollisionDeath
 --- !u!1 &8951850910367848322
 GameObject:
   m_ObjectHideFlags: 0

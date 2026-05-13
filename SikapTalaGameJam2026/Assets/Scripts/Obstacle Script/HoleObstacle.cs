@@ -7,7 +7,7 @@ public class HoleObstacle : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Dead");
+            GameManager.instance.Death();
         }
     }
 }

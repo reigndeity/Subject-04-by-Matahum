@@ -6,6 +6,8 @@ public class CCTVController : MonoBehaviour, IInteractable
     public Camera cctvCamera;
     public GameObject cctvPanel;
     public GameObject objectToRotate;
+    [Header("UI")]
+    public GameObject interactText;
 
     [Header("Interaction")]
     public float interactDistance = 3f;
@@ -52,7 +54,8 @@ public class CCTVController : MonoBehaviour, IInteractable
     void Awake()
     {
         src = GetComponent<AudioSource>();
-        if(src == null ) src = gameObject.AddComponent<AudioSource>();
+        if (src == null)
+            src = gameObject.AddComponent<AudioSource>();
 
         if (objectToRotate == null)
             objectToRotate = gameObject;
@@ -61,6 +64,22 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         if (outline != null)
             outline.enabled = false;
+
+        if (interactText == null)
+        {
+            GameObject canvas = GameObject.Find("Canvas -  SSO");
+
+            if (canvas != null)
+            {
+                Transform textTransform = canvas.transform.Find("InteractText");
+
+                if (textTransform != null)
+                    interactText = textTransform.gameObject;
+            }
+        }
+
+        if (interactText != null)
+            interactText.SetActive(false);
 
         Vector3 angles = objectToRotate.transform.localEulerAngles;
 
@@ -108,7 +127,7 @@ public class CCTVController : MonoBehaviour, IInteractable
 
     void UpdateOutline()
     {
-        if (outline == null || player == null)
+        if (player == null)
             return;
 
         Vector3 cctvPosition = transform.position;
@@ -120,10 +139,16 @@ public class CCTVController : MonoBehaviour, IInteractable
         float horizontalDistance = Vector2.Distance(playerXZ, cctvXZ);
         float verticalDistance = Mathf.Abs(playerPosition.y - cctvPosition.y);
 
-        outline.enabled =
+        bool canInteract =
             horizontalDistance <= interactDistance &&
             verticalDistance <= interactHeight &&
             !isOpen;
+
+        if (outline != null)
+            outline.enabled = canInteract;
+
+        if (interactText != null)
+            interactText.SetActive(canInteract);
     }
 
     void CheckInteraction()

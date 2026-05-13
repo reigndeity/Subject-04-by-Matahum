@@ -2,6 +2,8 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class GameManager : MonoBehaviour
     public int checkpointIndex;
 
     public Transform player;
+    [Header("Game Over")]
+    public GameObject gameOverPanel;
+    public Button confirmRestartButton;
+    public Button cancelRestartButton;
     [Header("Cutscenes")]
     public PlayableDirector playableDirector;
     public PlayableAsset cutscene1;
@@ -32,6 +38,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //StartCoroutine(StartGame());
+        confirmRestartButton.onClick.AddListener(ConfirmRestart);
+        cancelRestartButton.onClick.AddListener(ConfirmCancelRestart);
     }
     void Update()
     {
@@ -106,8 +114,6 @@ public class GameManager : MonoBehaviour
                     "I NEED TO GET OUT OF HERE!"
                 });
                 playableDirector.Resume();
-                monster.gameObject.SetActive(true);
-                monster.canMove = true;
                 break;
         }
     }
@@ -174,27 +180,28 @@ public class GameManager : MonoBehaviour
         switch (checkpointIndex)
         {
             case 0:
-                break;
-            case 1:
                 MonsterTeleporter.instance.TeleportAndMove(0);
                 break;
-            case 2:
+            case 1:
                 MonsterTeleporter.instance.TeleportAndMove(1);
                 break;
-            case 3:
+            case 2:
                 MonsterTeleporter.instance.TeleportAndMove(2);
                 break;
-            case 4:
+            case 3:
                 MonsterTeleporter.instance.TeleportAndMove(3);
                 break;
-            case 5:
+            case 4:
                 MonsterTeleporter.instance.TeleportAndMove(4);
                 break;
-            case 6:
+            case 5:
                 MonsterTeleporter.instance.TeleportAndMove(5);
                 break;
-            case 7:
+            case 6:
                 MonsterTeleporter.instance.TeleportAndMove(6);
+                break;
+            case 7:
+                MonsterTeleporter.instance.TeleportAndMove(7);
                 break;
         }
     }
@@ -203,20 +210,55 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(Dying());
     }
+    public void ConfirmRestart()
+    {
+        StartCoroutine(Restarting());
+        AudioManager.instance.PlayButtonClickSFX();
+    }
+    public void ConfirmCancelRestart()
+    {
+        StartCoroutine(CancellingRestart());
+        AudioManager.instance.PlayButtonClickSFX();
+    }
     public IEnumerator Dying()
     {
+        monster.canMove = false;
         Player.instance.inputLocked = true;
         Player.instance.StopMovement();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-
-        canvasGroupFade.Fade(0f, 1f, 1f);
-
-        yield return new WaitForSeconds(1.5f);
+        canvasGroupFade.Fade(0f, 1f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        canvasGroupFade.Fade(1f, 0f, 0.5f);
+        gameOverPanel.SetActive(true);  
+    }
+    public IEnumerator Restarting()
+    {
+        canvasGroupFade.Fade(0f, 1f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        gameOverPanel.SetActive(false);
         Load();
-        yield return new WaitForSeconds(1f);
-        canvasGroupFade.Fade(1f, 0f, 1f);
-        yield return new WaitForSeconds(1f);
-        UnlockPlayer();  
+        yield return new WaitForSeconds(0.5f);
+        canvasGroupFade.Fade(1f, 0f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        monster.canMove = true;
+        UnlockPlayer();
+    }
+    public IEnumerator CancellingRestart()
+    {
+        canvasGroupFade.Fade(0f, 1f, 0.5f);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void PlayDialogueBeep()
+    {
+        AudioManager.instance.PlayDialogueBeepSFX();
+    }
+
+    public void EnableMonster()
+    {
+        monster.gameObject.SetActive(true);
+        monster.canMove = true;
     }
 }

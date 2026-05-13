@@ -28,6 +28,7 @@ public class Monster : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Game Over");
+            GameManager.instance.Death();
         }
     }
 
