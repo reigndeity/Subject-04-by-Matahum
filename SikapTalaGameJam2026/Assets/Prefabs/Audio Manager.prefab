@@ -324,10 +324,7 @@ MonoBehaviour:
   footstepsClips:
   - {fileID: 8300000, guid: 702ff194a552c8943ad15b17cf1dc7bb, type: 3}
   - {fileID: 8300000, guid: f7258e6d92d1307439ac3746a07287c9, type: 3}
-  - {fileID: 8300000, guid: 69cf5766195407e418a832774a133f01, type: 3}
   - {fileID: 8300000, guid: 7c1b01029bcf0e4449a4c54a8d832c4a, type: 3}
-  - {fileID: 8300000, guid: 277bb1cf1e83d9b4baff0041250eb0ca, type: 3}
-  - {fileID: 8300000, guid: 2674a72d679262f4f971cfec1841e3cb, type: 3}
   cameraClips:
   - {fileID: 8300000, guid: 5834cad49e542bc4aa2070272b6d0718, type: 3}
   - {fileID: 8300000, guid: c02ad5293ede3e8498fcf7ec1e2fc8a4, type: 3}

@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
     public void PlayFootstepsSFX()
     {
         int randomIndex = Random.Range(0, footstepsClips.Length);
-        sfxSource.PlayOneShot(footstepsClips[randomIndex]);
+        sfxSource.PlayOneShot(footstepsClips[randomIndex], 0.1f);
     }
 
     public void PlayCameraOnSFX()
