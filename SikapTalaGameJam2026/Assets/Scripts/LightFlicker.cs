@@ -1,8 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LightFlicker : MonoBehaviour
 {
+    [Header("Light Checkpoint")]
+    public int checkpointIndex;
+
     [Header("Emission")]
     public Renderer rend;
     public Color emissionColor = Color.white;
@@ -33,6 +37,7 @@ public class LightFlicker : MonoBehaviour
     public float flickerSpeedMax = 0.12f;
 
     public bool isFlickering = true;
+    private bool isLightFlickering;
 
     private Material mat;
 
@@ -43,16 +48,14 @@ public class LightFlicker : MonoBehaviour
 
     void Start()
     {
+        isFlickering = Random.Range(0, 2) == 0;
+        isLightFlickering = isFlickering;
+
         mat = rend.material;
 
         mat.EnableKeyword("_EMISSION");
 
-        SetVisuals(
-            normalEmissionIntensity,
-            normalLightIntensity
-        );
-
-        flickerCoroutine = StartCoroutine(FlickerInterval());
+        ResetLight();
 
         if (isFlickering)
         {
@@ -147,5 +150,17 @@ public class LightFlicker : MonoBehaviour
             SetVisuals(0, 0);
             AudioManager.instance.PlayLightGoneOutSFX(src);
         }
+    }
+
+    public void ResetLight()
+    {
+        isFlickering = isLightFlickering;
+
+        SetVisuals(
+            normalEmissionIntensity,
+            normalLightIntensity
+        );
+
+        flickerCoroutine = StartCoroutine(FlickerInterval());
     }
 }

@@ -19,19 +19,24 @@ public class CheckpointTrigger : MonoBehaviour
         {
             GameManager.instance.OptimizeTV(1, true);
             GameManager.instance.OptimizeTV(0, false);
+            MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
         }
         if(checkpointIndex == 5)
         {
             GameManager.instance.OptimizeTV(1, false);
+            MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
         }
-        if(checkpointIndex == 6)
+        if (checkpointIndex == 6)
         {
             GameManager.instance.OptimizeTV(2, true);
+            MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
         }
-        if(checkpointIndex == 7)
+        if (checkpointIndex == 7)
         {
             GameManager.instance.OptimizeTV(3, true);
+            MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
         }
         this.gameObject.SetActive(false);
+        
     }
 }

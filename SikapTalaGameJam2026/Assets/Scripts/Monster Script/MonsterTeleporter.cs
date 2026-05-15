@@ -6,9 +6,6 @@ public class MonsterTeleporter : MonoBehaviour
 
     private MonsterMovement m_movement;
     public TeleportArrays[] teleportArrays;
-    public AudioSource auSource;
-
-    int currentIndex;
 
     private void Awake()
     {
@@ -23,10 +20,6 @@ public class MonsterTeleporter : MonoBehaviour
         if (m_movement == null)
         {
             Debug.Log("Cant see monster movement");
-            return;
-        }
-        if (currentIndex == index)
-        {
             return;
         }
 

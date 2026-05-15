@@ -25,7 +25,6 @@ public class WallColliderObstacle : MonoBehaviour
     }
     public void PlayWallColliderSFX()
     {
-        Debug.Log($"Played in {src.gameObject.name}");
         AudioManager.instance.PlayWallColliderSFX(src);
     }
 }

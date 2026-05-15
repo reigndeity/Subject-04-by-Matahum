@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public CanvasGroupFade canvasGroupFade;
     public CanvasGroupFade savingCanvasGroupFade;
-    public int checkpointIndex;
+    public int checkpointIndex = 0;
 
     public Transform player;
     [Header("Game Over")]
@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour
 
     [Header("TV Optimizer")]
     public TV_Opt[] tv_Opt;
+
+    [Header("Light Manager")]
+    public LightManager lightManager;
 
     void Awake()
     {
@@ -181,40 +184,33 @@ public class GameManager : MonoBehaviour
 
         player.SetPositionAndRotation(pos, Quaternion.LookRotation(Vector3.forward));
 
+        MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
+        lightManager.LightReset(checkpointIndex);
+
         switch (checkpointIndex)
         {
             case 0:
-                MonsterTeleporter.instance.TeleportAndMove(0);
                 OptimizeTV(0, true);
-                Debug.Log("OPTIMIZE TV");
                 break;
-            case 1:
-                MonsterTeleporter.instance.TeleportAndMove(1);
-                break;
-            case 2:
-                MonsterTeleporter.instance.TeleportAndMove(2);
-                break;
+
             case 3:
-                MonsterTeleporter.instance.TeleportAndMove(3);
                 OptimizeTV(1, true);
                 OptimizeTV(0, false);
                 break;
-            case 4:
-                MonsterTeleporter.instance.TeleportAndMove(4);
-                break;
+
             case 5:
-                MonsterTeleporter.instance.TeleportAndMove(5);
                 OptimizeTV(1, false);
                 break;
+
             case 6:
-                MonsterTeleporter.instance.TeleportAndMove(6);
                 OptimizeTV(2, true);
                 break;
+
             case 7:
-                MonsterTeleporter.instance.TeleportAndMove(7);
                 OptimizeTV(3, true);
                 break;
         }
+
     }
 
     public void Death()
