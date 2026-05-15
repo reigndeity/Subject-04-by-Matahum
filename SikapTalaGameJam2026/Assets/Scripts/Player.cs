@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     SkinnedMeshRenderer skinnedMeshRenderer;
 
+    public bool canInteract;
+
     void Awake()
     {
         if (instance == null) instance = this;

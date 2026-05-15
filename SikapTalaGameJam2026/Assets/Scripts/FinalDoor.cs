@@ -17,7 +17,7 @@ public class FinalDoor : MonoBehaviour, IInteractable
         if (outline != null)
             outline.enabled = false;
 
-        GameObject canvas = GameObject.Find("Canvas -  SSO");
+        GameObject canvas = GameObject.Find("Canvas - SSO");
 
         if (canvas != null)
         {
@@ -62,10 +62,28 @@ public class FinalDoor : MonoBehaviour, IInteractable
 
         if (interactText != null)
         {
-            interactText.SetActive(canInteract);
-
             if (canInteract)
-                interactText.GetComponent<TextMeshProUGUI>().text = "Press E to interact with the Door";
+            {
+                if (IInteractable.currentInteractable != this)
+                {
+                    IInteractable.currentInteractable = this;
+
+                    interactText.SetActive(true);
+
+                    interactText
+                        .GetComponent<TextMeshProUGUI>()
+                        .text =
+                        "Press <color=yellow>E</color> to interact with the Door";
+                }
+            }
+            else
+            {
+                if (IInteractable.currentInteractable == this)
+                {
+                    interactText.SetActive(false);
+                    IInteractable.currentInteractable = null;
+                }
+            }
         }
 
         if (canInteract && Input.GetKeyDown(KeyCode.E))

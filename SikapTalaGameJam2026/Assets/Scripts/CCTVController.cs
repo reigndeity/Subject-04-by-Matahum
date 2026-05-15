@@ -68,7 +68,7 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         if (interactText == null)
         {
-            GameObject canvas = GameObject.Find("Canvas -  SSO");
+            GameObject canvas = GameObject.Find("Canvas - SSO");
 
             if (canvas != null)
             {
@@ -150,10 +150,28 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         if (interactText != null)
         {
-            interactText.SetActive(canInteract);
-
             if (canInteract)
-                interactText.GetComponent<TextMeshProUGUI>().text = "Press <color=yellow>E</color> to interact with the CCTV";
+            {
+                if (IInteractable.currentInteractable != this)
+                {
+                    IInteractable.currentInteractable = this;
+
+                    interactText.SetActive(true);
+
+                    interactText
+                        .GetComponent<TextMeshProUGUI>()
+                        .text =
+                        "Press <color=yellow>E</color> to interact with the CCTV";
+                }
+            }
+            else
+            {
+                if (IInteractable.currentInteractable == this)
+                {
+                    interactText.SetActive(false);
+                    IInteractable.currentInteractable = null;
+                }
+            }
         }
     }
 
