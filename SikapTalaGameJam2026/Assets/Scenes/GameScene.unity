@@ -8403,9 +8403,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '> <shake>PAUSED</shake> <
 
-    
 
-    
+
+
 
 '
   m_isRightToLeft: 0
@@ -24256,7 +24256,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 1000, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1234429934
 MonoBehaviour:
@@ -24310,9 +24310,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: '> <shake>RETURN TO MENU</shake> <
 
-    
 
-    
+
+
 
 '
   m_isRightToLeft: 0
