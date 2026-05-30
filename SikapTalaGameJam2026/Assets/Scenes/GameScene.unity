@@ -5417,6 +5417,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1466636638248408070, guid: 3d04e87a49290f747a15e518aacd7cc4, type: 3}
   m_PrefabInstance: {fileID: 274323998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &277105312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1939708619452124600, guid: 9b3975b07cf7b014a8667229f0eb9593, type: 3}
+  m_PrefabInstance: {fileID: 4243893570024496280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &277169883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9222670939387815303, guid: 067b770656ced0945aa5e68a8203ea40, type: 3}
@@ -25312,6 +25317,7 @@ MonoBehaviour:
     - {fileID: 1298168633}
     - {fileID: 1192126301}
   lightManager: {fileID: 491598031}
+  playerObj: {fileID: 277105312}
 --- !u!1001 &1320870210
 PrefabInstance:
   m_ObjectHideFlags: 0

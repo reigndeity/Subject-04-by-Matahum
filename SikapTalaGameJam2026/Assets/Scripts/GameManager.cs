@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     [Header("Light Manager")]
     public LightManager lightManager;
 
+    [Header("Character Properties")]
+    public GameObject playerObj;
+
     void Awake()
     {
         instance = this;
@@ -48,16 +51,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine(StartGame());
+        StartCoroutine(StartGame());
         confirmRestartButton.onClick.AddListener(ConfirmRestart);
         cancelRestartButton.onClick.AddListener(ConfirmCancelRestart);
-    }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Death();
-        }
     }
 
     IEnumerator StartGame()
@@ -187,7 +183,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.GetFloat("CheckpointZ")
         );
 
-        player.SetPositionAndRotation(pos, Quaternion.LookRotation(Vector3.forward));
+        player.SetPositionAndRotation(pos, Quaternion.identity);
+
+        Player.instance.ResetCameraRotation();
 
         MonsterTeleporter.instance.TeleportAndMove(checkpointIndex);
         lightManager.LightReset(checkpointIndex);
@@ -245,6 +243,7 @@ public class GameManager : MonoBehaviour
         cancelRestartButton.gameObject.SetActive(false);
         restartFromLastCheckpointTxt.gameObject.SetActive(false);
         gameOverTitleObj.gameObject.SetActive(false);
+        playerObj.tag = "Untagged";
         yield return new WaitForSeconds(0.5f);
         gameOverPanel.SetActive(true);
         canvasGroupFade.Fade(1f, 0f, 0.5f);
@@ -263,6 +262,7 @@ public class GameManager : MonoBehaviour
         cancelRestartButton.GetComponent<TextMeshProUGUI>().text = "";
         restartFromLastCheckpointTxt.text = "";
         Load();
+        playerObj.tag = "Player";
         yield return new WaitForSeconds(1f);
         canvasGroupFade.Fade(1f, 0f, 0.5f);
         yield return new WaitForSeconds(0.5f);

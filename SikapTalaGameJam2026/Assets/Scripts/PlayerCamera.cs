@@ -83,4 +83,13 @@ public class PlayerCamera : MonoBehaviour
         Cursor.lockState = locked ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !locked;
     }
+
+    public void ResetRotation()
+    {
+        pitch = 0f;
+        yaw = 0f;
+
+        transform.localRotation = Quaternion.identity;
+        playerCamera.transform.localRotation = Quaternion.identity;
+    }
 }

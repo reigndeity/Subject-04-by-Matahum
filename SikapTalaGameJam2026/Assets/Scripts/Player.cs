@@ -49,4 +49,8 @@ public class Player : MonoBehaviour
     {
         playerMovement.Stop();
     }
+    public void ResetCameraRotation()
+    {
+        playerCamera.ResetRotation();
+    }
 }
