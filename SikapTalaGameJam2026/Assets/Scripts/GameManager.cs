@@ -43,10 +43,31 @@ public class GameManager : MonoBehaviour
     [Header("Character Properties")]
     public GameObject playerObj;
 
+    [Header("Pause Properties")]
+    public GameObject pausePanel;
+    public GameObject menuPanel;
+    public Button pauseResumeButton;
+    public Button pauseMainMenuButton;
+    public Slider mouseSensitivitySlider;
+    public TextMeshProUGUI mouseSensitivityValueText;
+    public float currentMouseSensitivity;
+    public Button confirmMenuButton;
+    public Button cancelMenuButton;
+
+    [HideInInspector] public bool isPaused = false;
+    [HideInInspector] public bool isCCTVActive = false;
+
+    private CanvasGroup fadeCanvasGroup;
+
     void Awake()
     {
         instance = this;
         playableDirector.playableAsset = null;
+
+        if (canvasGroupFade != null)
+        {
+            fadeCanvasGroup = canvasGroupFade.GetComponent<CanvasGroup>();
+        }
     }
 
     void Start()
@@ -54,6 +75,98 @@ public class GameManager : MonoBehaviour
         StartCoroutine(StartGame());
         confirmRestartButton.onClick.AddListener(ConfirmRestart);
         cancelRestartButton.onClick.AddListener(ConfirmCancelRestart);
+
+        pauseResumeButton.onClick.AddListener(TogglePause);
+
+        pauseMainMenuButton.onClick.AddListener(OnClickPauseMenu);
+        confirmMenuButton.onClick.AddListener(OnClickConfirmMenu);
+        cancelMenuButton.onClick.AddListener(OnClickCancelMenu);
+
+        // Initialize Sensitivity Slider
+        float savedSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        if (mouseSensitivitySlider != null)
+        {
+            mouseSensitivitySlider.minValue = 0.1f;
+            mouseSensitivitySlider.maxValue = 2f;
+            mouseSensitivitySlider.value = savedSensitivity;
+            UpdateSensitivityText(savedSensitivity);
+            mouseSensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            // CHECK: Block pause menu if a dialogue sequence is active
+            if (DialogueManager.instance != null && DialogueManager.instance.IsInDialogue())
+                return;
+
+            // CHECK: Block pause menu if a cutscene sequence is playing
+            if (IsCutscenePlaying())
+                return;
+
+            // Do not pause if in CCTV mode or game over screen is open
+            if (isCCTVActive || (gameOverPanel != null && gameOverPanel.activeInHierarchy))
+                return;
+
+            // Do not pause if the main canvas group is currently fading
+            if (fadeCanvasGroup != null && fadeCanvasGroup.alpha > 0f && fadeCanvasGroup.alpha < 1f)
+                return;
+
+            TogglePause();
+        }
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f;
+            if (pausePanel != null)
+                pausePanel.SetActive(true);
+
+            Player.instance.inputLocked = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            if (pausePanel != null)
+                pausePanel.SetActive(false);
+
+            Player.instance.inputLocked = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        AudioManager.instance.PlayButtonClickSFX();
+    }
+
+    void OnSensitivityChanged(float value)
+    {
+        PlayerPrefs.SetFloat("MouseSensitivity", value);
+        PlayerPrefs.Save();
+        UpdateSensitivityText(value);
+
+        if (Player.instance != null)
+        {
+            PlayerCamera playerCam = Player.instance.GetComponentInChildren<PlayerCamera>();
+            if (playerCam != null)
+            {
+                playerCam.UpdateSensitivityFromPrefs();
+            }
+        }
+    }
+
+    void UpdateSensitivityText(float value)
+    {
+        if (mouseSensitivityValueText != null)
+        {
+            mouseSensitivityValueText.text = value.ToString("F2");
+        }
     }
 
     IEnumerator StartGame()
@@ -219,6 +332,7 @@ public class GameManager : MonoBehaviour
     public void Death()
     {
         StartCoroutine(Dying());
+        AudioManager.instance.PlayScareSFX();
     }
     public void ConfirmRestart()
     {
@@ -250,6 +364,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         confirmRestartButton.GetComponent<TextMeshProUGUI>().text = "YES";
         cancelRestartButton.GetComponent<TextMeshProUGUI>().text = "NO";
+        AudioManager.instance.PlayDeathSFX();
         playableDirector.Play(uiGameOver);  
     }
     public IEnumerator Restarting()
@@ -271,6 +386,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator CancellingRestart()
     {
+        Time.timeScale = 1f;
         canvasGroupFade.Fade(0f, 1f, 0.5f);
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("MainMenuScene");
@@ -309,6 +425,24 @@ public class GameManager : MonoBehaviour
         monster.canMove = false;
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("EndCutscene");
+    }
+
+    public void OnClickPauseMenu()
+    {
+        menuPanel.SetActive(true);
+        pausePanel.SetActive(false);
+        AudioManager.instance.PlayButtonClickSFX();
+    }
+    public void OnClickCancelMenu()
+    {
+        menuPanel.SetActive(false);
+        pausePanel.SetActive(true);
+        AudioManager.instance.PlayButtonClickSFX();
+    }
+    public void OnClickConfirmMenu()
+    {
+        StartCoroutine(CancellingRestart());
+        AudioManager.instance.PlayButtonClickSFX();
     }
 }
 

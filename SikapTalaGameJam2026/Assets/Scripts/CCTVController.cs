@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -118,7 +119,10 @@ public class CCTVController : MonoBehaviour, IInteractable
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
+        {
             Close();
+            return;
+        }
 
         if (isControllable)
             HandleManualControl();
@@ -206,6 +210,10 @@ public class CCTVController : MonoBehaviour, IInteractable
     void Open()
     {
         isOpen = true;
+
+        if (GameManager.instance != null)
+            GameManager.instance.isCCTVActive = true;
+
         Player.instance.inputLocked = true;
         Player.instance.StopMovement();
 
@@ -221,10 +229,15 @@ public class CCTVController : MonoBehaviour, IInteractable
     public void Close()
     {
         isOpen = false;
-        Player.instance.inputLocked = false;
-        //Player.instance.FirstPersonMode();
+        StartCoroutine(CloseRoutine());
+    }
 
-        AudioManager.instance.PlayCameraOffSFX();
+    IEnumerator CloseRoutine()
+    {
+        Player.instance.inputLocked = false;
+
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlayCameraOffSFX();
 
         if (cctvPanel != null)
             cctvPanel.SetActive(false);
@@ -234,6 +247,13 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // Wait until the very end of this active frame before clearing the guard flag.
+        // This stops GameManager from reading isCCTVActive as false on this same input cycle.
+        yield return new WaitForEndOfFrame();
+
+        if (GameManager.instance != null)
+            GameManager.instance.isCCTVActive = false;
     }
 
     void HandleManualControl()
@@ -258,14 +278,12 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         bool moving = movement.magnitude > 0f;
 
-        // Started moving
         if (moving && !isPanning)
         {
             isPanning = true;
             AudioManager.instance.PlayCameraStartPanningSFX(src);
         }
 
-        // Stopped moving
         if (!moving && isPanning)
         {
             isPanning = false;

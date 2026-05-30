@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
     void Awake()
     {
         yaw = transform.eulerAngles.y;
-        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        UpdateSensitivityFromPrefs();
         cursorLocked = false;
         SetCursorState(true);
     }
@@ -47,6 +47,11 @@ public class PlayerCamera : MonoBehaviour
 
         playerCamera.transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
         transform.localRotation = Quaternion.Euler(0f, yaw, 0f);
+    }
+
+    public void UpdateSensitivityFromPrefs()
+    {
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
     }
 
     void HandleCursor()

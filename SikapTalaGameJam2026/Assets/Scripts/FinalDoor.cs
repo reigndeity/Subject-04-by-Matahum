@@ -86,7 +86,7 @@ public class FinalDoor : MonoBehaviour, IInteractable
             }
         }
 
-        if (canInteract && Input.GetKeyDown(KeyCode.E))
+        if (canInteract && Input.GetKeyDown(KeyCode.F))
             Interact();
     }
 

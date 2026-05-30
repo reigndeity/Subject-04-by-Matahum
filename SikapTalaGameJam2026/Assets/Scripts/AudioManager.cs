@@ -40,6 +40,10 @@ public class AudioManager : MonoBehaviour
     [Header("Light Gone Out SFX")]
     [SerializeField] AudioClip[] brokenLightsClips;
 
+    [Header("Death SFX")]
+    [SerializeField] AudioClip deathClip;
+    [SerializeField] AudioClip scareClip;
+
     private void Awake()
     {
         if (instance != null)
@@ -127,5 +131,13 @@ public class AudioManager : MonoBehaviour
 
         if (src == null) src = sfxSource;
         src.PlayOneShot(brokenLightsClips[randomIndex], 0.2f);
+    }
+    public void PlayDeathSFX()
+    {
+        sfxSource.PlayOneShot(deathClip);
+    }
+    public void PlayScareSFX()
+    {
+        sfxSource.PlayOneShot(scareClip);
     }
 }
