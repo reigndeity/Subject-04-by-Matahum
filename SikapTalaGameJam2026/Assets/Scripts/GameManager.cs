@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
     public Button confirmRestartButton;
     public Button cancelRestartButton;
+    public PlayableAsset uiGameOver;
+    public TextMeshProUGUI restartFromLastCheckpointTxt;
+    public GameObject gameOverTitleObj;
     [Header("Cutscenes")]
     public PlayableDirector playableDirector;
     public PlayableAsset cutscene1;
@@ -44,17 +48,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(StartGame());
+        //StartCoroutine(StartGame());
         confirmRestartButton.onClick.AddListener(ConfirmRestart);
         cancelRestartButton.onClick.AddListener(ConfirmCancelRestart);
     }
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Delete))
         {
             Death();
-        }*/
+        }
     }
+
     IEnumerator StartGame()
     {
         Player.instance.inputLocked = true;
@@ -235,17 +240,30 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         canvasGroupFade.Fade(0f, 1f, 0.5f);
+        restartFromLastCheckpointTxt.text = "Restart from last checkpoint?";
+        confirmRestartButton.gameObject.SetActive(false);
+        cancelRestartButton.gameObject.SetActive(false);
+        restartFromLastCheckpointTxt.gameObject.SetActive(false);
+        gameOverTitleObj.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.5f);
+        gameOverPanel.SetActive(true);
         canvasGroupFade.Fade(1f, 0f, 0.5f);
-        gameOverPanel.SetActive(true);  
+        yield return new WaitForSeconds(0.5f);
+        confirmRestartButton.GetComponent<TextMeshProUGUI>().text = "YES";
+        cancelRestartButton.GetComponent<TextMeshProUGUI>().text = "NO";
+        playableDirector.Play(uiGameOver);  
     }
     public IEnumerator Restarting()
     {
         canvasGroupFade.Fade(0f, 1f, 0.5f);
         yield return new WaitForSeconds(0.5f);
+        playableDirector.playableAsset = null;  
         gameOverPanel.SetActive(false);
+        confirmRestartButton.GetComponent<TextMeshProUGUI>().text = "";
+        cancelRestartButton.GetComponent<TextMeshProUGUI>().text = "";
+        restartFromLastCheckpointTxt.text = "";
         Load();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         canvasGroupFade.Fade(1f, 0f, 0.5f);
         yield return new WaitForSeconds(0.5f);
         monster.canMove = true;

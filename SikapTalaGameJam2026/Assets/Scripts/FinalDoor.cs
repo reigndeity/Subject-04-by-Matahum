@@ -73,7 +73,7 @@ public class FinalDoor : MonoBehaviour, IInteractable
                     interactText
                         .GetComponent<TextMeshProUGUI>()
                         .text =
-                        "Press <color=yellow>E</color> to interact with the Door";
+                        "Press <color=yellow>F</color> to interact with the Door";
                 }
             }
             else

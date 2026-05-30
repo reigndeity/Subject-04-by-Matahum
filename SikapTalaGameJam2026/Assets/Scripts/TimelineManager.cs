@@ -17,7 +17,7 @@ public class TimelineManager : MonoBehaviour
         playableDirector.Pause();
         yield return DialogueManager.instance.PlayDialogue(new string[]
         {
-            "Subject 13 has been successfully contained.",
+            "Subject 04 has been successfully contained.",
             "The patient fled the facility under the belief that he was being pursued by a monstrous presence.",
             "Curiously, he reported that the entity was invisible to the naked eye.",
             "He claimed it could only be seen through surveillance cameras and television monitors.",

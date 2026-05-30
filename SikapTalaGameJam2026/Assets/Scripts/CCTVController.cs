@@ -13,7 +13,7 @@ public class CCTVController : MonoBehaviour, IInteractable
     [Header("Interaction")]
     public float interactDistance = 3f;
     public float interactHeight = 5f;
-    public KeyCode interactKey = KeyCode.E;
+    public KeyCode interactKey = KeyCode.F;
 
     [Header("Control")]
     public bool isControllable = true;
@@ -103,6 +103,8 @@ public class CCTVController : MonoBehaviour, IInteractable
 
         if (playerObject != null)
             player = playerObject.transform;
+        
+        interactKey = KeyCode.F;
     }
 
     void Update()
@@ -161,7 +163,7 @@ public class CCTVController : MonoBehaviour, IInteractable
                     interactText
                         .GetComponent<TextMeshProUGUI>()
                         .text =
-                        "Press <color=yellow>E</color> to interact with the CCTV";
+                        "Press <color=yellow>F</color> to interact with the CCTV";
                 }
             }
             else
