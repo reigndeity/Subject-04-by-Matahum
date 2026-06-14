@@ -11,12 +11,12 @@ Subject 04 is a retro low-poly first-person horror game where players explore da
 
 # Game Screenshots
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/4817223a-9d4a-41ef-9ee7-dd688e2ce88c" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ff471ec9-e296-4c09-8e9d-2b8e635a9e12" />
+<img width="1920" height="1080" alt="image" src="https://img.itch.zone/aW1hZ2UvNDYyNzY2MC8yNzU3NTc3NC5wbmc=/347x500/6etMQp.png" />
+<img width="1920" height="1080" alt="image" src="https://img.itch.zone/aW1hZ2UvNDYyNzY2MC8yNzU3NTc3NS5wbmc=/347x500/hoAYLL.png" />
 
 
 # Game Link
-<br>Play it on itch.io: [**Boba Barista**](https://matahum.itch.io/boba-barista)
+<br>Play it on itch.io: [**Subject 04**](https://matahum.itch.io/subject-04)
 
 # Software Used
 - Unity
@@ -27,14 +27,13 @@ Subject 04 is a retro low-poly first-person horror game where players explore da
 
 # Project Members
 - Angeles, Timothy Joseph
-- Cedeño, Aaron Jason 
-- Cedeño, Vince Julius 
+- Cedeño, Vince Julius
+- Gaspar, Elijah Cid
 - Ramirez, Randall Jay 
-- Sasil, Kyrsten Shaen
 
 # Project Role
 - Game Programmer
 - Game Design
 - Sound Design
 
-This was our first time joining the Global Game Jam, and it ended up being one of the most fun and fast-paced projects we’ve worked on
+Last game jam as a student. Managed to secure 4th place out of 28 teams hahaha.
